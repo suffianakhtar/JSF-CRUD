@@ -131,14 +131,6 @@ http://localhost:8080/JSF-CRUD/
 
 ---
 
-## 📌 Screens
-
-- Student List  
-- Add Student  
-- Update Student  
-
----
-
 ## 📜 License
 
 This project is licensed under the **MIT License**.

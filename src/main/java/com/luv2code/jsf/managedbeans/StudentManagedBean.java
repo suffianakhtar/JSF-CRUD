@@ -9,7 +9,7 @@ import java.util.logging.Logger;
 
 import com.luv2code.jsf.entities.Student;
 import com.luv2code.jsf.jdbc.StudentDbUtil;
-import com.luv2code.wrappers.StudentWrapper;
+import com.luv2code.jsf.wrappers.StudentWrapper;
 
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.application.FacesMessage;

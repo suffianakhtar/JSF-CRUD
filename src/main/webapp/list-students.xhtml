@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<f:metadata>
+	<f:event listener="#{studentManagedBean.loadStudents}" type="preRenderView"></f:event>
+</f:metadata>
+<h:head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Student Tracker App</title>
+	<h:outputStylesheet name="style.css" library="css" />
+</h:head>
+<h:body>
+	<div id="wrapper">
+		<div id="header">
+			<h3>Student University</h3>
+		</div>
+	</div>
+	<div id="container">
+		<div id="content">
+			<h:form>
+				<h:messages globalOnly="true"/>
+				<h:button style="border: 1px solid #666;
+					border-radius: 5px; padding: 4px; font-size: 12px; font-weight:
+					bold; width: 120px; padding: 5px 10px; margin-bottom: 15px;
+					background:#cccccc; cursor: pointer"
+					value="Add Student"
+					outcome="add-student-form" />
+				<div id="search">
+					<h:outputText value="Search Student: "/>
+					<h:inputText value="#{studentWrapper.searchValue}"/>
+					<h:commandButton
+						style="border: 1px solid #666; 
+						border-radius: 4px; padding: 2px; font-size: 12px; font-weight: bold; 
+						width: 100px; padding: 5px 10px; margin-bottom: 15px; margin-left: 4px;
+						background: #cccccc; cursor: pointer"
+						value="Search" action="list-students?faces-redirect=true" />
+				</div>
+				<h:dataTable value="#{studentManagedBean.students}" var="student" 
+							border="1" styleClass="demo-table"
+							headerClass="demo-table-header" rowClasses="demo-table-odd-row,demo-table-even-row">
+			        <h:column>
+			            <f:facet name="header">First Name</f:facet>
+			            #{student.firstName}
+			        </h:column>
+			        <h:column>
+			            <f:facet name="header">Last Name</f:facet>
+			            #{student.lastName}
+			        </h:column>
+			        <h:column>
+			        	<f:facet name="header">Email</f:facet>
+			        	#{student.email}
+			        </h:column>
+			        <h:column>
+			        	<f:facet name="header">Action</f:facet>
+		               	<h:commandLink value="Update" action="#{studentManagedBean.loadStudent(student.id)}" />
+		               	|
+		               	<h:commandLink value="Delete" action="#{studentManagedBean.deleteStudent(student.id)}" />
+			        </h:column>
+				</h:dataTable>
+			</h:form>
+		</div>
+	</div>
+</h:body>
+</html>
